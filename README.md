@@ -31,5 +31,6 @@ cd ~/Documents/xcode-projects/mylib/mylib
                     make will output the dylib and dll into the ./bin/ folder.
 * ./fullbuild.sh  - This is just a shortcut script that will run the above scripts in order followed by make
 
-Depending on the complexity of your library you will most likely need to adjust the generated xamarin definition files. Once you have adjusted the definitions you can re-run ./fullbuild.sh to rebuild the dylib + dll**
+Depending on the complexity of your library you will most likely need to adjust the generated xamarin definition files. Once you have adjusted the definitions you can re-run ./fullbuild.sh to rebuild the dylib + dll
+
 Any of the generated scripts can be rerun at any time.
