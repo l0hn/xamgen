@@ -38,6 +38,7 @@ read -r -p "Give your library a name (You can change this at any time by editing
 echo $lib_name > lib_name
 
 cat <<'EOF' > gen.sh
+	LIB_NAME=$(cat lib_name)
 	echo "Checking for new header files.."
 	for f in *.h
 	do
@@ -58,7 +59,7 @@ cat <<'EOF' > gen.sh
 				echo "Generating binding for $f"
 				base_name=$(basename $f .h)
 				rm -rf $TMP_BND/
-				sharpie -tlm-do-not-submit bind -s macosx10.11 $f -o $TMP_BND/ -c -arch x86_64
+				sharpie -tlm-do-not-submit bind --namespace=$LIB_NAME -s macosx10.11 $f -o $TMP_BND/ -c -arch x86_64
 				echo "Moving $TMP_BND/ApiDefinitions.cs > $base_name.ApiDefinitions.cs"
 				cp TmpBindings/ApiDefinitions.cs $base_name.ApiDefinitions.cs
 				NEW_CS_FILES="$NEW_CS_FILES\n\t$base_name.ApiDefinitions.cs"
