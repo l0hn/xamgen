@@ -34,3 +34,14 @@ cd ~/Documents/xcode-projects/mylib/mylib
 Depending on the complexity of your library you will most likely need to adjust the generated xamarin definition files. Once you have adjusted the definitions you can re-run ./fullbuild.sh to rebuild the dylib + dll
 
 Any of the generated scripts can be rerun at any time.
+
+#Using your fresh new dll
+
+In-order to use your freshly minted dll you will **need to add a reference to it** (like normal). You also need to **load the .dylib** before calling NSApplication.Init(); e.g.
+
+```
+var v = ObjCRuntime.Dlfcn.dlopen ("path/to/your/lib.dylib", 0); //Do it before calling NSApplication.Init()!!
+NSApplication.Init();
+```
+
+This means you will **need to distribute your .dylib** inside your .app, preferably inside the MonoBundle directory.
