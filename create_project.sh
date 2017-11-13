@@ -107,7 +107,7 @@ XM_PATH = /Library/Frameworks/Xamarin.Mac.framework/Versions/Current
   all:
 	mkdir -p bin tmp
 	clang -dynamiclib -std=gnu99 $M_FILES -fvisibility=hidden -arch x86_64 -framework Cocoa -o bin/$LIB_NAME.dylib
-	MONO_PATH=\$(XM_PATH)/lib/mono/Xamarin.Mac \$(XM_PATH)/bin/bmac-mobile-mono \$(XM_PATH)/lib/bmac/bmac-full.exe -baselib:\$(XM_PATH)/lib/reference/mobile/Xamarin.Mac.dll $CS_FILES --compiler=mcs -o:bin/$LIB_NAME.dll --tmpdir=tmp --ns=Simple
+	MONO_PATH=/Library/Frameworks/Mono.framework/Versions/Current \$(XM_PATH)/bin/bmac-mobile-mono \$(XM_PATH)/lib/bmac/bmac-full.exe -baselib:\$(XM_PATH)/lib/reference/mobile/Xamarin.Mac.dll $CS_FILES --compiler=mcs -o:bin/$LIB_NAME.dll --tmpdir=tmp --ns=Simple
 
   clean:
 
